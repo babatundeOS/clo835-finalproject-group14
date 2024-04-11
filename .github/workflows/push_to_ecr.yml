@@ -39,7 +39,7 @@ jobs:
         APP_COLOR_CONTAINER2: "pink"
         APP_COLOR_CONTAINER3: "lime"
       run: |
-        cd app/
+        cd assignment2/app/
         ls -ltra
 
         IMAGE_TAG=mysql-db-$(date +"%H%M%S")
