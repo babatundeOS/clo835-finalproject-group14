@@ -33,7 +33,7 @@ table = 'employee';
 
 # Define the supported color codes
 default_bucket = "finalprojectimagesforgrp14"
-default_image = "project-bg.jpg"
+default_image = "bg-image.jpg"
 
 @app.route("/download", methods=['GET', 'POST'])
 def download(bucket = default_bucket, imageName = default_image):
