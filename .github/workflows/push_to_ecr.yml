@@ -68,7 +68,7 @@ jobs:
         export DBHOST=`docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' mysql_db`
         export DBPORT=3306
         export DBUSER=root
-        export DATABASE=employees
+        export DATABASE=employee
         export DBPWD=pw
         export APP_COLOR=blue
         
