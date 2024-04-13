@@ -1,0 +1,5 @@
+# mariadb_setup.yaml
+
+commands:
+  - sudo systemctl start mariadb
+  - sudo systemctl enable mariadb
