@@ -1,4 +1,6 @@
 .git/
+.git*
 .c9*
 .c9/*
 .github/
+.github*

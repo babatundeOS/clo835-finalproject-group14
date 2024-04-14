@@ -2,9 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: application
-  namespace: final
   labels:
     app: employees
+    component: frontend
 spec:
   replicas: 1
   selector:
@@ -14,37 +14,46 @@ spec:
     metadata:
       labels:
         app: employees
+        component: frontend
     spec:
       serviceAccountName: clo835
       containers:
         - name: application-container
           image: 558852840836.dkr.ecr.us-east-1.amazonaws.com/final_project:webapp-120236
-          imagePullPolicy: Always
           env:
             - name: DBPWD
               valueFrom:
                 secretKeyRef:
-                  name: secrets
-                  key: MYSQL_ROOT_PASSWORD
-            - name: DBHOST
-              valueFrom:
-                secretKeyRef:
-                  name: secrets
-                  key: DBHOST
+                  name: mysql
+                  key: password
             - name: DBUSER
               valueFrom:
                 secretKeyRef:
-                  name: secrets
-                  key: DBUSER
+                  name: mysql
+                  key: username
+            - name: DBHOST
+              value: "mysql.final.svc.cluster.local"
             - name: DBPORT
               value: "3306"
-          envFrom:
-            - configMapRef:
-                name: group4
+            - name: BUCKETNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: app-configmap
+                  key: bucket
+            - name: BGIMG
+              valueFrom:
+                configMapKeyRef:
+                  name: app-configmap
+                  key: bgimg
+            - name: GRPNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: app-configmap
+                  key: grpname
+          resources:
+            requests:
+              cpu: 15m
+            limits:
+              cpu: 50m
           ports:
             - containerPort: 81
-          resources:
-            limits:
-              cpu: "0.5"
-            requests:
-              cpu: "0.5"
