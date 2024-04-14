@@ -17,3 +17,40 @@ Happy coding!
 ## Babatunde Oyeyemi
 ## Dharmik Rana
 ## Soham Kandhare
+
+
+
+To deploy the YAML files in the correct order for a smooth deployment in the "final" namespace, you generally want to follow this sequence:
+
+secret.yaml
+pvc.yaml
+deployment.yaml
+service.yaml
+Here are the commands you can use:
+
+From the msql folder:
+
+1. Create secret:
+`kubectl apply -f secret.yaml -n final`
+2. Create PersistentVolumeClaim (PVC):
+`kubectl apply -f pvc.yaml -n final`
+3. Create deployment:
+`kubectl apply -f deployment.yaml -n final`
+4. Create service:
+`kubectl apply -f service.yaml -n final`
+
+From the Manifest folder:
+
+`kubectl apply -f serviceAccount.yaml -n final`
+
+`kubectl apply -f role.yaml -n final`
+
+`kubectl apply -f rolebinding.yaml -n final`
+
+`kubectl apply -f configmap.yaml -n final`
+
+`kubectl apply -f deployment.yaml -n final`
+
+`kubectl apply -f service.yaml -n final`
+
+`kubectl apply -f hpa.yaml -n final`
