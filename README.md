@@ -38,4 +38,20 @@ export DBPWD=pw
 export APP_COLOR=blue
 ```
 ### Run the application, make sure it is visible in the browser
-```docker run -p 8080:8080  -e DBHOST=$DBHOST -e DBPORT=$DBPORT -e  DBUSER=$DBUSER -e DBPWD=$DBPWD  my_app```
+```docker run -p 80:81  -e DBHOST=$DBHOST -e DBPORT=$DBPORT -e  DBUSER=$DBUSER -e DBPWD=$DBPWD  my_app```
+
+
+
+
+
+k delete deployment.apps/my-deployment -n final
+k delete service/app-service -n final
+
+kubectl get all -n final
+
+kubectl config set-context --current --namespace final
+
+aws eks update-kubeconfig --region us-east-1 --name clo835
+kubectl config set-context --current --namespace final
+k apply -f pvc.yaml
+k apply -f sqldb-pod-deployment.yaml

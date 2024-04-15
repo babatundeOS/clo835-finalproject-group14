@@ -10,7 +10,7 @@ DBHOST = os.getenv("DBHOST", "localhost")
 DBUSER = os.getenv("DBUSER", "root")
 DBPWD = os.getenv("DBPWD", "root")
 DATABASE = os.getenv("DATABASE", "employees")
-DBPORT = int(os.getenv("DBPORT", 3306))
+DBPORT = int(os.getenv("DBPORT", "3306"))
 BUCKETNAME = os.getenv("BUCKETNAME", "finalprojectgroup14")
 BGIMG = os.getenv("BGIMG", "bg-image.png")
 GRPNAME = os.getenv("GRPNAME", "Group 14")
@@ -39,9 +39,9 @@ def download(bucket=BUCKETNAME, imageName=BGIMG):
     print(f"Attempting to download from {bucket} the image {imageName}")
     try:
         session = boto3.Session(
-            aws_access_key_id='ASIAUMNHBPJRGNWB5BNY',
-            aws_secret_access_key='5qw+AMolFg31IkP9TGF4LGVZgeFr53UarvoMMwYl',
-            aws_session_token='IQoJb3JpZ2luX2VjECwaCXVzLXdlc3QtMiJHMEUCIQCHlWRhxcl9krhF9qK6/25nYPCoq3kFGPU0mOGsKrXt5QIgI/xc90GdPfvXEIZovDNYBSQ0MISn5rihK+J+/mXNykQqpgIIZRAAGgwzMDE1MzQ5MDI4ODIiDC3kCJTK5+fJZaSeiiqDAnZbu1QSCGy+lih7+s+3CCo5sP1R/+d/FhsXexZP0juxhBvA7v+1UqqF87chGVTCCShaTMQWrZknBhR96J+4SQdr5436E5GHvI5XcTWZ1Ij0PdH3DZqMzeKHUvB/G3BSZFwuI3+RRYAHCdTFz7jshIwjMMSYu2yNWCRuTXNVecg7i6zuXk8+opx11S5fwiZx/NjgYWIqYO83voX7MSWBgtXwDCxlvJM9l1ykuz2qdtlD1WzetVrsi82ZMcU/lhyMdUEEW3YceBmZBMOBJmZiaLMaddtomm2uuWLhfq8DEVtnQoZp3S3zDBpioHriJ8kbarxwCQWejSS7tkBz20Ac6F87qG8w1ZfmsAY6nQHL/EmHVSg3aCsR6ok+H0tg/7CqqDyocINJ8eFz4SBU/UCLjvjXcrCEOPrkXOiioSuNFb+dafYJHcnTuRERHNdjp21GFoMHj2AYVzOQ46TNgHqIt6Hs1IpzMCuSiBa8Izxnsi/1GlSSSsLSqL1b/6ngZ8WLiyRIRZKDSRgd2a8AIBGfnrxmNf4ESXItFvvSLfbEj2NUcGYcC88N22kP',  # Replace with your actual session token
+            aws_access_key_id='',
+            aws_secret_access_key='',
+            aws_session_token='',  # Replace with your actual session token
             region_name='us-east-1'
         )
         s3 = session.resource('s3')

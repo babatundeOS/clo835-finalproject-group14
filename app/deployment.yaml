@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+  namespace: final
+  labels: 
+    app: my-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+        - name: simple-webapp
+          image: 092659312972.dkr.ecr.us-east-1.amazonaws.com/sohamk:myapp
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: DBUSER
+              value: root
+          envFrom:
+            - configMapRef:
+                name: url-config
