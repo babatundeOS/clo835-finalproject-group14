@@ -1,6 +1,0 @@
-.git/
-terraform/.git/
-terraform/.terraform/
-terraform/.terraform.*
-terraform/my-key*
-terraform/my-key.*
