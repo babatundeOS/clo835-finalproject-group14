@@ -17,7 +17,7 @@ RUN pip3 install --upgrade pip==21.3.1 && \
     pip3 install -r requirements.txt
 
 # Expose port
-EXPOSE 5000
+EXPOSE 81
 
 # Create a non-root user
 RUN groupadd -r appuser && \
