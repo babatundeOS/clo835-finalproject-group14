@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: final
+  name: db-secret
+data:
+  DBPORT: "3306"

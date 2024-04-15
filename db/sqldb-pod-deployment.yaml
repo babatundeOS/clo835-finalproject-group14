@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: final
+  name: mysql-deployment
+  labels:
+    app.kubernetes.io/name: mysql
+    app.kubernetes.io/component: backend
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: mysql
+      app.kubernetes.io/component: backend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: mysql
+        app.kubernetes.io/component: backend
+    spec:
+      nodeSelector:
+        author: seneca
+      containers:
+      - name: mysql
+        image: 092659312972.dkr.ecr.us-east-1.amazonaws.com/sohamk:mydb
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: root
+        volumeMounts:
+        - name: my-volume
+          mountPath: /mnt/data
+        ports:
+        - containerPort: 3306
+      volumes:
+      - name: my-volume
+        persistentVolumeClaim:
+          claimName: sql-data
